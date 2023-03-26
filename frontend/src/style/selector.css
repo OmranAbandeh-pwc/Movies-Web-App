@@ -1,0 +1,46 @@
+.selector-container{
+    height: 40px;
+    width: 250px;
+}
+.today-selector-off{
+    position: relative;
+    left: 20px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    overflow-x: hidden;
+    height: 40px;
+    width: 47%;
+    background-color: white;
+    color: black;
+}
+.week-selector-on{
+    position: relative;
+    right: 0px;
+    border-radius: 30px;
+    background-color: rgb(0, 48, 98);
+    color: rgb(99, 243, 99);
+    font-weight: 800;
+    height: 40px;
+    width: 53%;
+}
+.today-selector-on{
+    border-radius: 30px;
+    position: relative;
+    left: 20px;
+    height: 40px;
+    width: 53%;
+    background-color: rgb(0, 48, 98);
+    color: rgb(99, 243, 99);
+    font-weight: 800;
+}
+.week-selector-off{
+    
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    
+    background-color: white;
+    color: black;
+    height: 40px;
+    width: 47%;
+   
+}

@@ -1,0 +1,59 @@
+
+body{
+    width: 100%;
+    margin: auto;
+}
+nav{
+    height: 60px;
+    background-color: rgb(1, 35, 72);
+    display: flex;
+    color: white;
+    position: relative;
+    bottom: 0;
+}
+nav .nav-logo-container{
+    position: relative;
+    bottom: 15%;
+    left: 5%;
+    width: 140px;
+    height: 80px;
+}
+nav .nav-logo-container img{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+h2{
+    position: relative;
+  bottom: 10px;
+  left: 5%;
+}
+
+.navbar-icons{
+    position: relative;
+    left: 68%;
+}
+
+.navbar-icons ul li{
+    display: inline-block;
+    margin-left: 40px;
+}
+.bookmark-icon{
+    font-size: 18px; 
+    color: rgb(226, 207, 0);
+    
+}
+.english-icon{
+    font-size: 22px;
+    
+}
+.search-icon{
+    font-size: 22px;
+    color: rgb(55, 243, 86);
+}
+.logout-icon{
+    font-size: 25px;
+    color: rgb(204, 118, 118);
+}

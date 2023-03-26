@@ -1,0 +1,67 @@
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=c43d9d587e46f628e40146067ece7b86", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("https://api.themoviedb.org/3/trending/movie/day?api_key=c43d9d587e46f628e40146067ece7b86", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+function App() {
+
+  const arrItems = [
+    {name:'apple', price:'12$' ,},
+    {name:'orange', price:'5$' ,},
+    {name:'banana', price:'9$' ,},
+    {name:'lemon', price:'17$' ,}
+  ]
+  
+
+  const [query, setQuery] = useState('')
+
+  const check = (items,item) => {
+  if(query === ''){
+    return items = []
+  }else{
+    return items.filter((value) => value.name.includes(query))
+  }
+ }
+
+const test = check(arrItems,query)
+
+  return (
+
+   <div className='main-container'>
+    
+    <div className='container'>
+    <input className='input-text' type='text' onChange={(e) => setQuery(e.target.value)} placeholder='search'/> 
+    
+    </div>
+
+    <div>
+    {test.map((value)=>(
+
+      <div key={value.name} className='card'>
+    <div className='list-item' key={value.name}>{value.name}</div>
+    <p>{value.price}</p>
+    </div>
+    
+    ))}
+    </div>
+    
+   </div>
+   
+  );
+}
+

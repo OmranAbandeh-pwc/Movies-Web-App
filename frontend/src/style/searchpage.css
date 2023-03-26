@@ -1,0 +1,108 @@
+.main-container-searchpage{
+    
+    width: 65%;
+    margin: auto;
+}
+.search-bar-searchpage{
+    width: 100%;     
+    
+}
+.search-bar-searchpage input{
+    padding-left: 10%;
+    border: none;
+    width: 100%;
+    outline: none;
+    height: 35px;
+    filter: drop-shadow(2px 2px 2px rgb(182, 181, 181));
+}
+
+.searched-card{
+    filter: drop-shadow(5px 5px 5px rgb(182, 181, 181));
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 1%;
+    height: 150px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    overflow-x: hidden;
+}
+.image-container{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 100%;
+    width: 15%;
+    background-color: white;
+    overflow: hidden;
+}
+.image-container img{
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.moive-info-container{
+    height: 100%;
+    width: 85%;
+    position: relative;
+    
+}
+.movie-searched-name{
+    margin: auto;
+    height: 32%;
+    width: 94%;
+    margin-top: 2.7%;
+    
+}
+.movie-searched-name h3{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 0;
+    padding-bottom: 0px;
+}
+.movie-searched-name p{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0px;
+    font-size: 13px;
+    color: gray;
+}
+.movie-searched-description{
+    margin: auto;
+    width: 94%;
+    height: 32%;
+    margin-top: 2%;
+    overflow: hidden;
+    font-size: 14px;
+}
+.searched-card-link{
+    text-decoration: none;
+    max-width: 20px;
+    color: black;
+}
+.resualt-search-container{
+    border-bottom: solid rgb(212, 212, 212);
+    padding-left: 10%;
+    height: 30px;
+    font-size: 14px;
+    color: gray;
+    filter: drop-shadow(2px 2px 2px rgb(182, 181, 181));
+}
+
+
+.page-numbers-container{
+    font-size: 18px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    
+}
+.page-numbers-container button{
+    margin-left: 10px;
+    background-color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+}

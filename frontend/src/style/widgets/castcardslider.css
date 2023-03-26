@@ -1,0 +1,9 @@
+.cast-card-slider{
+    margin: auto;
+    width: 80%;
+    height: 300px;
+    display: flex;
+    overflow-x: auto;
+    position: relative;
+    top: 10px;
+}

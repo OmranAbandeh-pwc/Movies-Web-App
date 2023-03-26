@@ -1,0 +1,61 @@
+.container{
+    color: white;
+    margin: auto;
+    position: relative;
+    display: flex;
+    width: 90%;
+    height: 280px;
+}
+
+.main-body-container{
+    overflow-y: scroll;
+}
+.container .welcome-container{
+    width: 100%;
+    position: relative;
+    top: 15%;
+    left: 5%;
+}
+
+.container .welcome-container input{
+    position: relative;
+    top: 15%;
+    width: 80%;
+    height: 40px;
+    border-radius: 30px;
+    padding-left: 25px;
+   
+}
+.box{
+    width: 100%;
+    position: absolute;
+    display: inline-block;
+}
+input{
+    position: relative;
+    display: inline-block;
+}
+.movie-container{
+    margin: auto;
+    width: 90%;
+}
+.card-movie-container{
+    display: flex;
+    overflow-x: auto;
+    margin: auto;
+    height: 350px;
+    width: 90%;
+}
+.selector-main-container{
+    display: flex;
+    overflow-x: hidden;
+    position: relative;
+    left: 10%;
+    top: 20px;
+    width: 80%;
+    height: 40px;
+}
+.selector-main-container .trending{
+    font-size: 23px;
+    padding-right: 10px;
+}

@@ -1,0 +1,114 @@
+
+.main-login-container{
+    position: relative;
+    top: 100px;
+    margin: auto;
+    height: 500px;
+    width: 70%;
+}
+.main-signup-container{
+    position: relative;
+    top: 10px;
+    margin: auto;
+    height: 500px;
+    width: 70%;
+}
+.login-info-container {
+    padding-bottom: 30px;
+    font-weight: 320;
+}
+
+.login-info-container span{
+    color: rgb(2, 196, 222);
+    text-decoration: none;
+}
+.login-info-container span:hover{
+    text-decoration: underline;
+    color: rgb(2, 196, 222);
+}
+.main-login-container h2{
+    font-weight: 600;
+}
+.main-signup-container h2{
+    font-weight: 600;
+}
+
+.username-container{
+    margin-bottom: 1rem;
+}
+.email-container{
+    margin-bottom: 1rem;
+}
+.password-container{
+    margin-bottom: 1rem;
+}
+
+.email-pass-container p{
+    padding-bottom: 5px;
+    font-weight: 320;
+    margin: 0;
+}
+.email-pass-container input{
+    padding-left: 15px;
+    border-radius: 5px;
+    border:  solid  rgb(200, 200, 200);
+    width: 99%;
+    height: 35px;
+}
+.buttons-container {
+    padding-top: 10px;
+}
+.buttons-container button{
+    height: 35px;
+    width: 80px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(2, 196, 222);
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
+}
+.buttons-container a{
+    text-decoration: none;
+    padding-left: 15px;
+    color: rgb(2, 196, 222);
+}
+.signup-success{
+    position: relative;
+    
+    top: 20px;
+    border: .06cm solid green;
+    height: 24%;
+    width: 100%;
+}
+.sginup-success-items{
+    margin: auto;
+    position: relative;
+    top: 20px;
+    width: 90%;
+    
+}
+.sginup-success-items div{
+    position: relative;
+    top: 5px;
+    background-color: rgb(2, 196, 222);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 35px;
+    width: 90px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 15px;   
+}
+.sginup-success-items p {
+    font-size: 18px;
+    font-weight: 300;
+    color:rgb(98, 97, 97);
+    margin: 0;
+}
+.sginup-success-items a{
+    text-decoration: none;
+}
+
