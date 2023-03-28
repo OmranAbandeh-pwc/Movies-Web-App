@@ -22,6 +22,8 @@ const Body = () => {
 
   useEffect(() => {
   dispatch(popularDayMovies())
+  getUserInfo()
+  console.log(localStorage.getItem('usertoken'))
   }, [])
 
   // This Week Button
@@ -35,6 +37,21 @@ const Body = () => {
   setSwitcher(true)
   dispatch(popularDayMovies())
  }
+
+ const getUserInfo = async () => {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0MTlkMmMxYzA1NWJmMzIxYTU2MThjNSIsIm5hbWUiOiJvbXJhbiIsImVtYWlsIjoib21yYW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiJwYXNzIiwiX192IjowfSwiaWF0IjoxNjgwMDAyMjkyfQ.Bfh558Y8ZFG1WXe6znnBJcCPqXLmHiKzEQPrdQBAYoU`);
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+  const res = await fetch("/api/users/post/", requestOptions)
+  const data = await res.json()
+  localStorage.setItem("userid", data.authData.user._id)
+}
 
  
 

@@ -1,5 +1,7 @@
 const User = require('../models/userModel')
 const mongoose = require("mongoose")
+const jwt = require('jsonwebtoken')
+const { application } = require('express')
 
 
 // Login api
@@ -9,7 +11,13 @@ const userLogin = async (req, res) => {
     const user = await User.findOne({ email: email})
     if(user){
       if(password === user.password){
-        res.status(200).json({msg: "success", userid: user._id, username: user.name, useremail: user.email})
+        jwt.sign({user}, 'secretKey', (err, token) => {
+          res.json({
+            token,
+            msg:'success'
+          })
+        })
+        // res.status(200).json({userid: user._id, username: user.name, useremail: user.email})
       } else {
         res.status(400).json({ msg: "fail"})
       }
@@ -18,6 +26,31 @@ const userLogin = async (req, res) => {
     }
 }
 
+
+const postFun = (req, res) => {
+  jwt.verify(req.token, 'secretKey', (err, authData) => {
+    if( err ) {
+      res.sendStatus(403)
+    } else {
+      res.json({msg: 'post created', authData})
+    }
+  })
+}
+
+
+// Verify Token Function
+function verifyToken(req, res, next){
+  const bearerHeader = req.headers['authorization'];
+
+  if(typeof bearerHeader !== 'undefined'){
+    const bearer = bearerHeader.split(' ')
+    const bearerToken = bearer[1]
+    req.token = bearerToken;
+    next()
+  } else {
+    res.sendStatus(403)
+  }
+}
 
 
 // Create User
@@ -49,4 +82,4 @@ const signUp = async (req, res) => {
 
 
 
-module.exports = { signUp, userLogin}
+module.exports = { signUp, userLogin, verifyToken, postFun}

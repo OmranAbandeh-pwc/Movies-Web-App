@@ -7,7 +7,8 @@ const { findById } = require('../models/watchedListModel')
 
 // GET All the movies 
 const getMovies = async (req, res) => {
-    const movies = await MovieWL.find({}).sort({createdAt: -1})
+    const {userid} = req.body
+    const movies = await MovieWL.find({userid : userid})
     res.status(200).json(movies)
 }
 

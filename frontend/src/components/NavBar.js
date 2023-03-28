@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [searchIcon, setSearchIcon] = useState(true)
-  let userin = localStorage.getItem("userid")
+  let userin = localStorage.getItem("usertoken")
 
   const setSearchIconFunc = () => {
     setSearchIcon(!searchIcon)

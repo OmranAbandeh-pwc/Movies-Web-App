@@ -12,7 +12,7 @@ router.get('/singlemovie/:id', getSingleMovie)
 router.delete('/deletemovie/:id', deleteMovie)
 
 // Router for Get all the movies in the moives watched list
-router.get('/getmovieswatchedlist/', getMovies)
+router.post('/getmovieswatchedlist/', getMovies)
 
 
 module.exports = router;

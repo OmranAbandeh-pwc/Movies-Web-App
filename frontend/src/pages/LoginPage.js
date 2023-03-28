@@ -12,34 +12,32 @@ const LoginPage = () => {
 
     const handleLogin = async () => {
     
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-    
-        var raw = JSON.stringify({
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      
+      var raw = JSON.stringify({
         "email": email,
         "password": password
-        });
-    
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
-    
-        const response = await fetch("/api/users/login/", requestOptions)
-        const data = await response.json()
-        console.log(data.msg)
-    
-        if(data.msg === "success"){
-          localStorage.setItem("userid",data.userid)
-          localStorage.setItem("name",data.name)
-          localStorage.setItem("email",data.email)
-          window.location.reload(false)
-        }else{
-          alert("email or pass is wrong")
-        }
+      });
+      
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      
+      const response = await fetch("/api/users/login/", requestOptions)
+      const data = await response.json()
+      if(data.msg === 'success'){
         
+        localStorage.setItem('usertoken', data.token)
+        window.location.reload(false)
+        console.log(localStorage.getItem('usertoken'))
+      } else {
+        alert('Wrong Email or Password ')
+      }
+  
        }
 
        const handleRegistNavig = () => {

@@ -12,21 +12,29 @@ const WatchedPage = () => {
   },[])
 
 
-  const test = watchedMovies.filter((elemen) => elemen.userid === localStorage.getItem('userid'))
+
 
  const movieWatchedListApi = async () => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    "userid": localStorage.getItem('userid')
+  });
+
   var requestOptions = {
-    method: 'GET',
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
     redirect: 'follow'
   };
   setLoading(true)
-   const response = await fetch("/api/watchedlist/getmovieswatchedlist/", requestOptions)
-   const data = await response.json()
-   const userMovies = data.filter((element) => element.userid === localStorage.getItem('userid'))
-   setWatchedMovies(userMovies)
-   setLoading(false)
-   
- }
+  const response = await fetch("/api/watchedlist/getmovieswatchedlist/", requestOptions)
+  const data = await response.json() 
+  setWatchedMovies(data)
+  setLoading(false) 
+  
+  }
 
 
   return (

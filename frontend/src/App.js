@@ -6,13 +6,18 @@ import Selector from "./components/Selector";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import WatchedPage from "./pages/WatchedPage";
-
+import { useEffect } from "react";
 
 
 function App() {
   
 
-  let userlogged = localStorage.getItem("userid")
+  useEffect(() => {
+
+  },[])
+
+  let userlogged = localStorage.getItem("usertoken")
+  
   return (
     
     <>
