@@ -1,5 +1,6 @@
 const express = require('express')
-const { signUp, userLogin, verifyToken, postFun } = require("../controllers/userController")
+const { signUp, userLogin, postFun } = require("../controllers/userController")
+const { verifyToken } = require('../Global')
 const router = express.Router()
 
 router.post('/login/',  userLogin)

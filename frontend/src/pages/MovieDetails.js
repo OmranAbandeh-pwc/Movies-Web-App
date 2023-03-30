@@ -14,11 +14,13 @@ const MovieDetails = () => {
   const {id} = useParams()
   const [movies, setMovies] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [watched, setWatched] = useState(null)
+  const [watched, setWatched] = useState(false)
+  
 
   useEffect(() => {
-  
-    getMovies()   
+    
+    getMovies() 
+    
     
   }, [])
   
@@ -27,62 +29,44 @@ const MovieDetails = () => {
     setIsLoading(true)
     const moviesFormer = await fetchMovieDetailsAPI()
     setMovies(moviesFormer)
-    //console.log(moviesFormer)
-    setIsLoading(false)  
+    setIsLoading(false) 
+   
   }
  
   // Fetching movie details api to get all the movie info
   const fetchMovieDetailsAPI = async () => {
+
+    var myHeaders = new Headers();
+    const usertoken = localStorage.getItem('usertoken')
+    myHeaders.append("Authorization", `Bearer ${usertoken}`);
+
+
+    var request = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=8d93590a0dee93ef264a94b3755603f8`, requestOptions)
     const data = await response.json()
-    const res = await fetch(`/api/watchedlist/singlemovie/${data.id}`, requestOptions)
-    const dt = await res.json()
-    if(dt.msg === 'exist' && localStorage.getItem('userid') === dt.movie.userid){
+    const watchedResponse = await fetch(`/api/watchedlist/singlemovie/${data.id}`, request)
+    const watchedData = await watchedResponse.json()
+    if(watchedData.msg === 'exist'){
       setWatched(true)
-    }else{
+      console.log(watched)
+    } else {
       setWatched(false)
+      console.log(watched)
     }
     return data;
   }
 
-  // API to send movie to the Watched List Page
-  const handlingWatchedList = async () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({
-      "id": movies.id,
-      "userid": localStorage.getItem('userid'),
-      "poster_path": movies.poster_path,
-      "title": movies.title,
-      "release_date": movies.release_date,
-      "vote_average": movies.vote_average,
-      "isWatched": true
-    });
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-    const response = await fetch("/api/watchedlist/moviewatchedlist/", requestOptions)
-    const data = await response.json()    
-    if(data.msg === 'exist'){
-      setWatched(false)
-      var requestDelete = {
-        method: 'DELETE',
-        redirect: 'follow'
-      };
-      fetch(`/api/watchedlist/deletemovie/${movies.id}`, requestDelete)
-        .then(response => response.text())
-    } else {
-      setWatched(true)
-    } 
-  }
+
 
   // This Function is made to get only the year from the movie date
   const getYear = () => {
@@ -96,6 +80,44 @@ const MovieDetails = () => {
   return `(${year})`;
   }
 
+  
+  const handleWatchedList = async () => {
+    const usertoken = localStorage.getItem('usertoken')
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${usertoken}`);
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      "id": movies.id,
+      "poster_path": movies.poster_path,
+      "title": movies.title,
+      "release_date": movies.release_date,
+      "vote_average": movies.vote_average,
+      "isWatched": true
+    });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    const response = await fetch("/api/watchedlist/moviewatchedlist/", requestOptions)
+    const data = await response.json()
+    if(data.msg === 'exist'){
+      setWatched(false)
+      var requestDelete = {
+        method: 'DELETE',
+        redirect: 'follow'
+      };
+      fetch(`/api/watchedlist/deletemovie/${movies.id}`, requestDelete)
+        .then(response => response.text())
+    } else {
+      setWatched(true)
+    }
+  }
+  
  
 
   return (
@@ -118,7 +140,7 @@ const MovieDetails = () => {
               <CircularProgressWidget height={65} width={65} percentage={34}/>
             <h3>User Score</h3>
               <div  className='icon-container'> <AiFillDatabase className='fav'  /> </div>
-              <div onClick={handlingWatchedList}  className='icon-container'> <BsFillBookmarkFill className='fav' style={watched ? { color:"orange" }:{ color:"white" }}   /> </div>
+              <div onClick={handleWatchedList}  className='icon-container'> <BsFillBookmarkFill className='fav' style={watched ? { color:"orange" }:{ color:"white" }}   /> </div>
               <div  className='icon-container'> <AiFillHeart className='fav'   /> </div>
               <div  className='icon-container'> <BsStarFill className='fav'  /> </div>
             </div>

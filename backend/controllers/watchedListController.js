@@ -7,7 +7,7 @@ const { findById } = require('../models/watchedListModel')
 
 // GET All the movies 
 const getMovies = async (req, res) => {
-    const {userid} = req.body
+    const userid = req.userid
     const movies = await MovieWL.find({userid : userid})
     res.status(200).json(movies)
 }
@@ -15,9 +15,10 @@ const getMovies = async (req, res) => {
 //GET a single movie
 const getSingleMovie = async (req, res) => {
     const { id } = req.params
+    const userid = req.userid
 
     const movie = await MovieWL.findOne({ id: id })
-    if(movie){
+    if(movie && movie.userid === userid){
         res.status(200).json({movie,msg:"exist"})
     }else{
         res.status(200).json({msg:"notexist"})
@@ -41,7 +42,8 @@ const deleteMovie = async (req, res) => {
 // POST movie api
 
 const watchedList = async (req, res) => {
-    const {id,userid,poster_path,title,release_date,vote_average, isWatched} = req.body
+    const {id,poster_path,title,release_date,vote_average, isWatched} = req.body
+    const userid = req.userid
 
     const checkWatchedMovie = await MovieWL.findOne({ id: id})
 

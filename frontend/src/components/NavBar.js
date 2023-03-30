@@ -16,7 +16,7 @@ const NavBar = () => {
     setSearchIcon(!searchIcon)
   }
   const logout = () => {
-    localStorage.clear("userid")
+    localStorage.clear("usertoken")
     window.location.reload(false)
    }
   return (

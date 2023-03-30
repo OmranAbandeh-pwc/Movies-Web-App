@@ -32,6 +32,7 @@ const LoginPage = () => {
       if(data.msg === 'success'){
         
         localStorage.setItem('usertoken', data.token)
+        console.log(data)
         window.location.reload(false)
         console.log(localStorage.getItem('usertoken'))
       } else {

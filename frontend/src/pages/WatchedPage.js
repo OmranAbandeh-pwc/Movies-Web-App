@@ -13,34 +13,33 @@ const WatchedPage = () => {
 
 
 
+  const movieWatchedListApi = async () => {
+    var myHeaders = new Headers();
+    const usertoken = localStorage.getItem('usertoken')
+    myHeaders.append("Authorization", `Bearer ${usertoken}`);
 
- const movieWatchedListApi = async () => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+    var raw = "";
 
-  var raw = JSON.stringify({
-    "userid": localStorage.getItem('userid')
-  });
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
 
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
-  };
-  setLoading(true)
-  const response = await fetch("/api/watchedlist/getmovieswatchedlist/", requestOptions)
-  const data = await response.json() 
-  setWatchedMovies(data)
-  setLoading(false) 
-  
+    setLoading(true)
+    const response = await fetch("/api/watchedlist/getmovieswatchedlist/", requestOptions)
+    const data = await response.json()
+    setWatchedMovies(data)
+    console.log(data)
+    setLoading(false)
   }
 
 
   return (
     <>
     <h1>List of Watched Movies</h1>
-       {loading ? "loading" :
+       {loading ? "loading...." :
        
        <div className='movie-container'> 
         <div className='card-movie-container'>
