@@ -2,9 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from './pages/MainPage'
 import MovieDetails from "./pages/MovieDetails";
 import SearchPage from "./pages/SearchPage";
-import Selector from "./components/Selector";
 import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
 import WatchedPage from "./pages/WatchedPage";
 import { useEffect } from "react";
 
@@ -16,13 +14,13 @@ function App() {
 
   },[])
 
-  let userlogged = localStorage.getItem("usertoken")
+  let userToken = localStorage.getItem("usertoken")
   
   return (
     
     <>
       
-      { userlogged === null ? <LoginPage/> :
+      { userToken === null ? <LoginPage/> :
         <Routes>
          <Route path="/" element={<MainPage/>}/>
          <Route path="/watchedlist/" element={<WatchedPage/>}/>

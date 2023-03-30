@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../style/selector.css"
+import "../style/widgets/selector.css"
 const Selector = ({today, thisweek, dayFun, weekFun}) => {
    
     

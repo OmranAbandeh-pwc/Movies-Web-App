@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import "../style/body.css";
+import "../style/pages/mainpage.css";
 import Card from '../components/Card';
 import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import NavBar from '../components/NavBar';
-import "../style/searchbarstyle.css"
-import Selector from "../components/Selector"
+import "../style/components/searchbarstyle.css"
+import Selector from "../widgets/Selector"
 import { useSelector, useDispatch } from 'react-redux';
 import { popularDayMovies, popularWeekMovies } from '../redux/MoviesListSlicer';
 

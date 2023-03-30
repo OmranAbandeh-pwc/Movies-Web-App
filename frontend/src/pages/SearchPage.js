@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
-import "../style/searchpage.css"
+import "../style/pages/searchpage.css"
 import SearchBarFilter from "../components/SearchBarFilter"
 
 const SearchPage = () => {

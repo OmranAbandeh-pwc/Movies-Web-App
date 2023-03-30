@@ -24,17 +24,6 @@ const userLogin = async (req, res) => {
     }
 }
 
-const postFun = (req, res) => {
-  jwt.verify(req.token, process.env.SECRETKEY, (err, authData) => {
-    if( err ) {
-      res.sendStatus(403)
-    } else {
-      res.json({msg: 'post created', authData})
-    }
-  })
-}
-
-
 
 
 // Create User
@@ -62,4 +51,4 @@ const signUp = async (req, res) => {
 
 
 
-module.exports = { signUp, userLogin, postFun }
+module.exports = { signUp, userLogin }

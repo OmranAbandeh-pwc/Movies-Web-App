@@ -1,4 +1,4 @@
-import '../style/loginpage.css'
+import '../style/pages/loginpage.css'
 import { useState } from "react";
 import SignupPage from './SignupPage';
 import Footer from '../components/Footer';

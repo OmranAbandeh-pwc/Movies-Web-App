@@ -1,6 +1,6 @@
 const MovieWL = require('../models/watchedListModel')
 const mongoose = require('mongoose')
-const { findById } = require('../models/watchedListModel')
+
 
 
 
@@ -41,7 +41,7 @@ const deleteMovie = async (req, res) => {
 
 // POST movie api
 
-const watchedList = async (req, res) => {
+const putWatchedList = async (req, res) => {
     const {id,poster_path,title,release_date,vote_average, isWatched} = req.body
     const userid = req.userid
 
@@ -56,4 +56,4 @@ const watchedList = async (req, res) => {
    
 }
 
-module.exports = { watchedList, getMovies, getSingleMovie, deleteMovie }
+module.exports = { putWatchedList, getMovies, getSingleMovie, deleteMovie }

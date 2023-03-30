@@ -1,4 +1,4 @@
-import "../style/navbar.css";
+import "../style/components/navbar.css";
 import {BiSearch} from 'react-icons/bi'
 import {BsFillBookmarkFill} from 'react-icons/bs'
 import {RiEnglishInput} from 'react-icons/ri'

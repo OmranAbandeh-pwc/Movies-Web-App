@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
+import NavBar from '../components/NavBar'
 import '../style/pages/watchedpage.css'
 
 const WatchedPage = () => {
@@ -31,13 +32,13 @@ const WatchedPage = () => {
     const response = await fetch("/api/watchedlist/getmovieswatchedlist/", requestOptions)
     const data = await response.json()
     setWatchedMovies(data)
-    console.log(data)
     setLoading(false)
   }
 
 
   return (
     <>
+    <NavBar/>
     <h1>List of Watched Movies</h1>
        {loading ? "loading...." :
        

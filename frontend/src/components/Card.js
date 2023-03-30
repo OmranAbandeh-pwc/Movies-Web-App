@@ -1,4 +1,4 @@
-import "../style/card.css"
+import "../style/components/card.css"
 import {CircularProgressbar, buildStyles} from  "react-circular-progressbar"
 import CircularProgressWidget from "../widgets/CircularProgressWidget"
 import { Link } from "react-router-dom";

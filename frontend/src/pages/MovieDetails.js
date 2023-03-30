@@ -1,18 +1,17 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import "../style/moviedetails.css"
 import CastCardSlider from "../widgets/CastCardSlider"
 import NavBar from "../components/NavBar"
 import { AiFillHeart, AiFillDatabase} from 'react-icons/ai'
 import {BsFillBookmarkFill,BsStarFill} from 'react-icons/bs'
-import "../style/moviedetails.css"
+import "../style/pages/moviedetails.css"
 import CircularProgressWidget from '../widgets/CircularProgressWidget'
 
 
 const MovieDetails = () => {
 
   const {id} = useParams()
-  const [movies, setMovies] = useState([])
+  const [movieDetails, setMovieDetails] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [watched, setWatched] = useState(false)
   
@@ -28,7 +27,7 @@ const MovieDetails = () => {
   const getMovies = async () => {
     setIsLoading(true)
     const moviesFormer = await fetchMovieDetailsAPI()
-    setMovies(moviesFormer)
+    setMovieDetails(moviesFormer)
     setIsLoading(false) 
    
   }
@@ -57,10 +56,8 @@ const MovieDetails = () => {
     const watchedData = await watchedResponse.json()
     if(watchedData.msg === 'exist'){
       setWatched(true)
-      console.log(watched)
     } else {
       setWatched(false)
-      console.log(watched)
     }
     return data;
   }
@@ -72,7 +69,7 @@ const MovieDetails = () => {
   const getYear = () => {
   let year = ""
   if(isLoading){}else{
-  const date = `${movies.release_date}`
+  const date = `${movieDetails.release_date}`
   for(let i = 0 ; i <= 3; i++){
       year += date[i]
     }
@@ -80,7 +77,7 @@ const MovieDetails = () => {
   return `(${year})`;
   }
 
-  
+  // Function to Put & Remove the movie from Watched List
   const handleWatchedList = async () => {
     const usertoken = localStorage.getItem('usertoken')
     var myHeaders = new Headers();
@@ -88,11 +85,11 @@ const MovieDetails = () => {
     myHeaders.append("Content-Type", "application/json");
     
     var raw = JSON.stringify({
-      "id": movies.id,
-      "poster_path": movies.poster_path,
-      "title": movies.title,
-      "release_date": movies.release_date,
-      "vote_average": movies.vote_average,
+      "id": movieDetails.id,
+      "poster_path": movieDetails.poster_path,
+      "title": movieDetails.title,
+      "release_date": movieDetails.release_date,
+      "vote_average": movieDetails.vote_average,
       "isWatched": true
     });
     
@@ -111,7 +108,7 @@ const MovieDetails = () => {
         method: 'DELETE',
         redirect: 'follow'
       };
-      fetch(`/api/watchedlist/deletemovie/${movies.id}`, requestDelete)
+      fetch(`/api/watchedlist/deletemovie/${movieDetails.id}`, requestDelete)
         .then(response => response.text())
     } else {
       setWatched(true)
@@ -124,15 +121,15 @@ const MovieDetails = () => {
     <>
       <NavBar/>
     {isLoading ? "...Loading" :
-    <div className='movie-background-container' style={{backgroundRepeat:"no-repeat",backgroundImage: `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.3)) , url(https://image.tmdb.org/t/p/w500${movies.backdrop_path})`}}>
+    <div className='movie-background-container' style={{backgroundRepeat:"no-repeat",backgroundImage: `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.3)) , url(https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path})`}}>
       <div className='movie-container' >
         <div className='movie-image'>
-            <img src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}/>
+            <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}/>
         </div>
         <div className='movie-info' >
-          <h1>{movies.title}<span className='year'>{getYear()}</span></h1>
+          <h1>{movieDetails.title}<span className='year'>{getYear()}</span></h1>
           <ul>
-            <li>{movies.release_date}</li>
+            <li>{movieDetails.release_date}</li>
             <li>. Drama</li>
             <li>. 1h 57m</li>
           </ul>
@@ -145,7 +142,7 @@ const MovieDetails = () => {
               <div  className='icon-container'> <BsStarFill className='fav'  /> </div>
             </div>
           <h3>Overview</h3>
-          <p className='description'>{movies.overview}</p>
+          <p className='description'>{movieDetails.overview}</p>
           <div className='team-info'>
             <div>
               <h4 className='team-names'>Darren Aronofsky</h4>

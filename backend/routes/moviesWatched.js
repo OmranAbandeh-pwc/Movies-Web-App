@@ -1,10 +1,10 @@
 const express = require('express')
-const { watchedList, getMovies, getSingleMovie, deleteMovie } = require('../controllers/watchedListController')
+const { putWatchedList, getMovies, getSingleMovie, deleteMovie } = require('../controllers/watchedListController')
 const { verifyToken } = require('../Global')
 const router = express.Router()
 
 // Router for Post a new movie in the movies list 
-router.post('/moviewatchedlist/',verifyToken, watchedList)
+router.post('/moviewatchedlist/',verifyToken, putWatchedList)
 
 // Router for single movie
 router.get('/singlemovie/:id', verifyToken, getSingleMovie)

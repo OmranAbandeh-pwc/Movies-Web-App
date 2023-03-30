@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "../style/searchbarfilter.css"
+import "../style/components/searchbarfilter.css"
 import {MdClear} from "react-icons/md"
 
 const SearchBarFilter = () => {
